@@ -1,6 +1,5 @@
 package com.example.user.dependencyinjectiondemo;
 
-
 public interface SayHelloContract {
     interface View {
         void showMessage(String message);

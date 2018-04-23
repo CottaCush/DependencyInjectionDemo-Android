@@ -16,6 +16,7 @@ public class SayHelloPresenter implements SayHelloContract.Presenter {
     @Override
     public void loadMessage() {
         if (person.getFirstName() == null && person.getLastName() == null) {
+            view.showMessage("");
             view.showError("No person name found.");
             return;
         }
@@ -26,7 +27,13 @@ public class SayHelloPresenter implements SayHelloContract.Presenter {
 
     @Override
     public void saveName(String firstName, String lastName) {
-        person.setFirstName(firstName);
-        person.setLastName(lastName);
+        if(firstName.length() != 0 || lastName.length() != 0) {
+            person.setFirstName(firstName);
+            person.setLastName(lastName);
+        }
+        else {
+            person.setFirstName(null);
+            person.setLastName(null);
+        }
     }
 }
